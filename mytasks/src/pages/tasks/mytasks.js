@@ -22,7 +22,7 @@ class MyTasks extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			showNav: false,
+			isLoading: false,
 			completedtasks: false,
 			uncompletedtasks: false,
 			pasttasks: false,
@@ -32,12 +32,14 @@ class MyTasks extends Component {
 			showDeleteModal: false,
 			deletingTaskId: "",
 			showCompleteModal: false,
-			completingTaskId: ""
+			completingTaskId: "",
+			tasks: this.props.tasks
 		}
 	}
 	componentDidMount(){
     this.props.fetchTasks();
   }
+	//Handle Filter Tasks-----Start
 	handleFromDate = (taskDate) =>{
 	 	this.setState({fromdate: taskDate.toDate().getTime()}, function () {
 	    this.filter();
@@ -80,12 +82,14 @@ class MyTasks extends Component {
 					this.refs["pasttasks"].checked = false;
 					this.refs["uncompletedtasks"].checked = false;
 					isPast = 1;
+					isCompleted = 0;
 				}
 			}
 		}
     this.props.filterTasks(isCompleted,isPast,fromDate,toDate);
 	}
-
+  //Handle Filter Tasks-----End
+	// Handle Delete Task function-----Start
 	showDeleteModal = (taskId) => {
     this.setState({ showDeleteModal: true, deletingTaskId: taskId });
   }
@@ -94,10 +98,13 @@ class MyTasks extends Component {
 	}
 	deleteTask = (e) => {
 		this.props.deleteTask(this.state.deletingTaskId).then(()=>{
-			this.props.history.push("/")
+			this.setState({ showDeleteModal: false });
+			this.props.fetchTasks();
 		})
-		this.setState({ showDeleteModal: false });
 	}
+	// Handle Delete Task function-----End
+
+	// Handle Complete Task function-----Start
 	showCompleteModal = (taskId) => {
     this.setState({ showCompleteModal: true, completingTaskId: taskId });
   }
@@ -106,10 +113,12 @@ class MyTasks extends Component {
 	}
 	markTask = (e) => {
 		this.props.editTask({id: this.state.completingTaskId, completedPct: 100}).then(()=>{
-			this.props.history.push("/")
+			this.setState({ showCompleteModal: false });
+			this.props.fetchTasks();
 		})
-		this.setState({ showCompleteModal: false });
+
 	}
+	// Handle Complete Task function-----End
 	render() {
 
 		return (

@@ -24,6 +24,7 @@ class TaskForm extends Component {
 	componentDidMount() {
     this.setState({taskDate: this.props.taskDate?this.props.taskDate:new Date().getTime()});
 	}
+	//Validate the inputs of Form
   validate = () =>{
 
       try{
@@ -43,14 +44,13 @@ class TaskForm extends Component {
 
     const form = event.currentTarget;
     var hasError = this.validate();
-    console.log("hasError: "+ hasError)
+		event.preventDefault();
+		event.stopPropagation();
     if (form.checkValidity() === false || !hasError ) {
-
-      event.preventDefault();
-      event.stopPropagation();
     }else{
-      this.props.handleSubmit(this.state, this.props.history)
-      this.props.history.push('/mytasks');
+      this.props.handleSubmit(this.state, this.props.history).then(()=>{
+				this.props.history.push('/');
+			})
     }
   }
   handleChange = (e) => {

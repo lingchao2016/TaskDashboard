@@ -12,6 +12,7 @@ class NewForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			isLoading: false,
 			subject: props.subject,
 		  description: props.description,
 		  taskDate: props.taskDate,
