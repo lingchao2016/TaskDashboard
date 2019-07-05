@@ -57,7 +57,11 @@ npm start
 ![enter image description here](https://lh3.googleusercontent.com/lSpRYwDKwaULV1zcR1xfNkfLb6Iesoz5aKVF9U8AV7wZmwtsGFaH111gp5SMI4izMvejqsBePhXV)
 ![](https://lh3.googleusercontent.com/Fco9yi8bAGR5uH7i9cg7Hu7z4hciK-DBp6C6uZhcerK3Pg3h_4LWN5Chyt5KtHaEQBSFzVEK_fOX)
 
-7. Swagger UI for Server API
+7. Calendar View of tasks
+
+![enter image description here](https://lh3.googleusercontent.com/Dn1gh5qY2xjROLyG1th3NrfVZhoMK8Qg-l5O3wTVAoccG9IX0IwbNRMPqt4D3H9iEH5MbRincui4)
+
+8. Swagger UI for Server API
 [http://localhost:5000/docs/v1/](http://localhost:5000/docs/v1/)
 
 ![enter image description here](https://lh3.googleusercontent.com/E9qjr6ojETVQ_iSse2OZtuw5UkxK63Dax90u9dpwDMU4BHWDYZmXgYr-KNK09II5jEchEkFS8B27)
